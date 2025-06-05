@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quora Posts</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Quora</h1>
+    <hr>
+
+    <div id="container">
+        <% for(let post of posts){ %>
+            <div class="post">
+                <h2 class="username">@<%= post.username %>
+                </h2>
+                <p class="content">
+                    <%= post.content %>
+                </p>
+
+                <div class="options">
+                    <form action="http://localhost:3000/posts/<%= post.id %>">
+                        <button>show in detail</button>
+                    </form>
+
+                    <a href="http://localhost:3000/posts/<%=post.id%>/edit">Edit</a>
+
+                    <form method="post" action="http://localhost:3000/posts/<%= post.id %>?_method=DELETE">
+                        <button>delete</button>
+                    </form>
+                </div>
+
+            </div>
+            <%}%>
+
+    </div>
+    <a href="http://localhost:3000/posts/new">create new post</a>
+</body>
+
+</html>
